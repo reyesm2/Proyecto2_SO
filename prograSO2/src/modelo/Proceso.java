@@ -21,18 +21,20 @@ public class Proceso {
     private String estado;
     private int prioridad;
     private int ProgramCounter;
+    private String nombre;
     private ArrayList<String> logEventos;
     private boolean uso;
     private ArrayList<Mensaje> bufferMensajes;
     
-    public Proceso(int identificador,String estado, int prioridad) {
+    public Proceso(int identificador,String estado, int prioridad, String nombre) {
         
         this.identificador = identificador;
         this.prioridad = prioridad;
         this.logEventos = new ArrayList<String>();
         this.uso=false;
         this.estado = estado;
-        bufferMensajes =  new ArrayList<>();
+        this.bufferMensajes =  new ArrayList<>();
+        this.nombre=nombre;
     }
     
     public String getLogEventos(int cantidadEventos){
@@ -123,7 +125,7 @@ public class Proceso {
 
     public void setProgramCounter(int ProgramCounter) {
         this.ProgramCounter = ProgramCounter;
-    }
+    }    
     
     public String getStringColaMensajes(){
         

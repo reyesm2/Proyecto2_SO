@@ -5,7 +5,8 @@
  */
 package prograso2;
 
-import Frames.Menu;
+import Frames.MenuImpresion;
+
 
 /**
  *
@@ -18,8 +19,8 @@ public class PrograSO2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Menu menu = new Menu();
-        menu.show();
+        MenuImpresion menuImpresion = new MenuImpresion();
+        menuImpresion.show();
     }
     
 }
