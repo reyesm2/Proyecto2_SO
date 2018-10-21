@@ -126,6 +126,16 @@ public class Proceso {
     public void setProgramCounter(int ProgramCounter) {
         this.ProgramCounter = ProgramCounter;
     }    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     
     public String getStringColaMensajes(){
         

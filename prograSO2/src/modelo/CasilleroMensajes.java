@@ -146,11 +146,9 @@ public class CasilleroMensajes {
         int valor1=0;
         for(int i=1;i<prioridades.size();i++){
             valor1 = prioridades.get(i);
-            //if(valor1>=0){
                 if(valor1>valor){
                     result=i;
                 }
-            //}
         }
         return result;
     }

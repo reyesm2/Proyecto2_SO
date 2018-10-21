@@ -24,6 +24,14 @@ public class ColaProcesos {
         return this.listaProcesos;
     }
     
+    public boolean validarNombre(String nombre){
+        for(Proceso proceso: this.listaProcesos){
+            if(proceso.getNombre().equals(nombre)){
+                return true;
+            }
+        }
+        return false;
+    }
     
     public String getLogEvento(int idProceso, int Ncomandos){
         
@@ -79,9 +87,6 @@ public class ColaProcesos {
         return false;
         
     }
-    
-    
- 
     
     public void ImprimirColaProcesos(){
 

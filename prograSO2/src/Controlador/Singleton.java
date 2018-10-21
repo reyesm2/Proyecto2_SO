@@ -11,8 +11,8 @@ package Controlador;
  */
 public class Singleton {
     
-    private int cantidadProcesosCreados = 0;  // Usado como identificador
-    private int cantidadMensajesCreados = 0;  // Usado como identificador
+    private int cantidadAplicaciones = 0;  // Usado como identificador
+    private int cantidadImpresoras = 0;  // Usado como identificador
     private static Singleton INSTANCE = null;
     private Controlador controlador;
 
@@ -24,19 +24,19 @@ public class Singleton {
         return controlador;
     }
 
-    public void setCantidadMensajesCreados(int cantidadMensajesCreados){
-        this.cantidadMensajesCreados = cantidadMensajesCreados;
+    public void setCantidadImpresoras(int cantidadImpresoras){
+        this.cantidadImpresoras = cantidadImpresoras;
         
     }
-    public int getCantidadMensajesCreados(){
-        return this.cantidadMensajesCreados;
+    public int getCantidadImpresoras(){
+        return this.cantidadImpresoras;
     }
-    public int getCantidadProcesosCreados() {
-        return cantidadProcesosCreados;
+    public int getCantidadAplicaciones() {
+        return cantidadAplicaciones;
     }
 
-    public void setCantidadProcesosCreados(int cantidadProcesosCreados) {
-        this.cantidadProcesosCreados = cantidadProcesosCreados;
+    public void setCantidadAplicaciones(int cantidadAplicaciones) {
+        this.cantidadAplicaciones = cantidadAplicaciones;
     }
     
     
