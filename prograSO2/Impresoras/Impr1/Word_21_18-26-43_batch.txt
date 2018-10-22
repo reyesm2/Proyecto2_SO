@@ -1,0 +1,28 @@
+#configuracion
+1
+Texto
+Largo Fijo
+12
+FIFO
+Blocking
+NonBlocking
+Directo
+Receive Explicito
+12
+10
+100
+#create
+Msg1
+3
+Msg2
+5
+#send
+3
+4
+Msg1
+0
+1
+Msg2
+#receive
+4
+3

@@ -12,10 +12,12 @@ package modelo;
 public class Impresora {
     private Proceso proceso;
     private CasilleroMensajes casilleroMensajes;
+    private int contador;
 
     public Impresora(Proceso proceso, CasilleroMensajes casilleroMensajes) {
         this.proceso = proceso;
         this.casilleroMensajes = casilleroMensajes;
+        this.contador = 0;
     }
 
     public Proceso getProceso() {
@@ -32,6 +34,19 @@ public class Impresora {
 
     public void setCasilleroMensajes(CasilleroMensajes casilleroMensajes) {
         this.casilleroMensajes = casilleroMensajes;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+
+    @Override
+    public String toString() {
+        return "Impresora{" + "proceso=" + proceso + ", casilleroMensajes=" + casilleroMensajes + ", contador=" + contador + '}';
     }
     
 }

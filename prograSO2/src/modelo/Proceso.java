@@ -171,7 +171,12 @@ public class Proceso {
         
         return cola;
         
-        
-        
     }
+
+    @Override
+    public String toString() {
+        return "Proceso{" + "identificador=" + identificador + ", estado=" + estado + ", prioridad=" + prioridad + ", ProgramCounter=" + ProgramCounter + ", nombre=" + nombre + ", logEventos=" + logEventos + ", uso=" + uso + ", bufferMensajes=" + bufferMensajes + '}';
+    }
+    
+    
 }

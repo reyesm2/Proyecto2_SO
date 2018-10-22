@@ -1,0 +1,40 @@
+ASPECTOS A EVALUAR
+
+Formato, redacción y ortografía
+
+Portada
+Ortografía
+Formato
+Redacción
+WBS
+
+Introducción
+Define correctamente los paquetes y las actividades.
+Define el desglose de los procesos de planificación.
+Divide la recopilación de requerimientos y la ingeniería necesaria. Segmenta las actividades necesarias para recopilar requerimientos funcionales, no funcionales, definir métricas y estándares. 
+Desglosa correctamente el diseño de la base de datos (creación del diseño, tablas, procedimientos almacenados, funciones, etc), la aplicación, diseño prototipos, seguridad, entre otros.                        
+Se desglosa correctamente y de forma completa la implementación de la BD, la aplicación (se dividen los paquetes de las diferentes funcionalidades de la aplicación). Se incluyen aspectos de configuración, integración, seguridad, etc.
+Definen la segmentación de manejo de pruebas y controles, manejo de errores, reuniones con patrocinadores e interesados, entre otros.                                
+Segmentan tareas de finalización, documentación de manuales, entrega proyecto, aceptación, finalización de contratos.
+Importante: Tiene que ser legible, de lo contrairo la nota es 0 en los respectivos rubros del WBS.
+
+GESTIÓN DEL ALCANCE 
+
+Introcción
+Describe el producto y el proyecto como resultado.
+El contenido (excluyendo  introducción y anexo) mínimo de 5 páginas detalla de forma amplia y descriptiva el alcance del proyecto.
+Se definen supuestos, restricciones y limitaciones.
+Se indica la información general del proyecto. Los requerimientos y las funcionalidades de la aplicación.
+Se describe el problema, las necesidades, y los objetivos de forma correcta.
+Se aborda el proyecto mediante entregables como prototipos, partes funcionales de la aplicación, informes de avance, etc.
+Se definen medidas para evaluar el desempeño del proyecto y el cumplimiento del alcance de forma correcta.
+Se establecen las exclusiones del proyecto de forma amplia.
+Los supuestos son definidos de forma correcta.
+Los factores críticos de éxito son declarados.
+Se establecen permisos, convenios, contratos, adquisiciones, aspectos de calidad, planes, requerimientos excluidos, etc.
+Anexo*
+*Importate: Como anexo hacer un cuadro con todas las funcionalidades de la aplicación. Este tiene que ser coherente con el alcance. El cuadro debe tener el nombre de la funcionalidad, la descripción, dificultad (Baja, Media, Alta), e importancia para el éxito de  proyecto / satisfacción del cliente (Baja, Meda, Alta). Esta información podría ser considerada para la evalucaión del prototipo (por lo menos ver que consideraron la función en su elaboración), y en la evalución final de la aplicación. 
+
+**Subir un solo archivo PDF
+
+Recomendación: exportar el WBS como pdf o como imagen y pegarla en un docx para guardarlo como PDF en un formato de hoja tamaño tabloide (11´x 17´) ,y luego unirlo mediante un programa online para unir PDFs con el resto del documento (el resto del documento esta en tamaño carta). 

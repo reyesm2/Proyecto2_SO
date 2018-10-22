@@ -55,10 +55,8 @@ public class CasilleroMensajes {
         String mensajeCompleto = "";
         
         int id;
-        String tipo ; 
         int destino;
         int fuente;
-        int largo;
         String contenido;
         int prioridad;
         
@@ -67,15 +65,15 @@ public class CasilleroMensajes {
             
             id = mensaje.getId();
             contenido = (String)mensaje.getContenido();
-            tipo = mensaje.getTipo();
             destino = mensaje.getDestino();
             fuente = mensaje.getFuente();
-            largo = mensaje.getLargo();
             prioridad = mensaje.getPrioridad();
+            String nombreDestino = Singleton.getInstance().getControlador().nombreImpresora(destino);
+            String nombreFuente = Singleton.getInstance().getControlador().nombreAplicacion(fuente);
             mensajeCompleto = "ID: " + String.valueOf(id) + " Contenido: " 
-                    + contenido + " Destino: " + 
-                    String.valueOf(destino) + " Fuente: " + String.valueOf(fuente) 
-                    + " Largo: " + largo +" Prioridad: "+String.valueOf(prioridad) + "\n"; 
+                    + contenido + " Destino: " + nombreDestino 
+                    /*String.valueOf(destino)*/ + " Fuente: " + nombreFuente/*String.valueOf(fuente)*/ 
+                    +" Prioridad: "+String.valueOf(prioridad) + "\n"; 
             
             casillero = casillero + mensajeCompleto;
             i+=1;
@@ -182,7 +180,23 @@ public class CasilleroMensajes {
         this.listaMensajesCola.add(mensaje);
         return true;        
     }
+    /**
+     * Valida la cantidad de elementos para ver si se puden agregar mas
+     * @return 
+     */
+    public boolean validarSize(){
 
+        int largoActual = this.listaMensajes.size();
+        if(largoActual < this.largoMaximo){
+            return true;
+            
+        }
+        else{
+            return false; 
+        }
+        
+    }
+    
     public boolean AgregarMensajeDinamico(Mensaje mensaje){
 
         this.listaMensajes.add(mensaje);
@@ -223,6 +237,11 @@ public class CasilleroMensajes {
 
     public void setTipoLargo(String tipoLargo) {
         this.tipoLargo = tipoLargo;
+    }
+
+    @Override
+    public String toString() {
+        return "CasilleroMensajes{" + "listaMensajesCola=" + listaMensajesCola + ", listaMensajes=" + listaMensajes + ", listaPrioridades=" + listaPrioridades + ", largoMaximo=" + largoMaximo + ", manejoCola=" + manejoCola + ", tipoLargo=" + tipoLargo + ", procesoAsociado=" + procesoAsociado + '}';
     }
     
 }
