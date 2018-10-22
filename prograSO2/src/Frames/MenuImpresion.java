@@ -77,6 +77,9 @@ public class MenuImpresion extends javax.swing.JFrame {
         jTextField_msgSend = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton_cargarMsg = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea_logApp = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -86,6 +89,9 @@ public class MenuImpresion extends javax.swing.JFrame {
         jTextArea_casilleroImpresora = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jButton_imprimir = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea_logImpresora = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -207,7 +213,7 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField_ImprNameSize, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton_CrearImpr)
                 .addContainerGap())
         );
@@ -237,6 +243,11 @@ public class MenuImpresion extends javax.swing.JFrame {
 
         jLabel10.setText("Aplicaciones creadas:");
 
+        jList_applicaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList_applicacionesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList_applicaciones);
 
         jList_sendImpresora.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,6 +277,12 @@ public class MenuImpresion extends javax.swing.JFrame {
             }
         });
 
+        jTextArea_logApp.setColumns(20);
+        jTextArea_logApp.setRows(5);
+        jScrollPane6.setViewportView(jTextArea_logApp);
+
+        jLabel13.setText("Log:");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -278,39 +295,49 @@ public class MenuImpresion extends javax.swing.JFrame {
                         .addGap(33, 412, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton_cargarMsg)
+                                    .addComponent(jButton1))
+                                .addGap(119, 119, 119))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(134, 134, 134))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(jTextField_msgSend, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton_cargarMsg)
-                                    .addComponent(jButton1))
-                                .addGap(119, 119, 119))))))
+                                .addGap(35, 35, 35))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_msgSend, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_cargarMsg)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -339,8 +366,7 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Aplicaciones", jPanel3);
@@ -353,6 +379,8 @@ public class MenuImpresion extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jList_impresoras);
+
+        jPanel7.setPreferredSize(null);
 
         jTextArea_casilleroImpresora.setEditable(false);
         jTextArea_casilleroImpresora.setColumns(20);
@@ -368,6 +396,13 @@ public class MenuImpresion extends javax.swing.JFrame {
             }
         });
 
+        jTextArea_logImpresora.setEditable(false);
+        jTextArea_logImpresora.setColumns(20);
+        jTextArea_logImpresora.setRows(5);
+        jScrollPane5.setViewportView(jTextArea_logImpresora);
+
+        jLabel12.setText("Log:");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -375,25 +410,34 @@ public class MenuImpresion extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(210, 210, 210)
+                                .addComponent(jButton_imprimir)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(jButton_imprimir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel9)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_imprimir)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton_imprimir)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(5, 5, 5)))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -417,10 +461,9 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane2.addTab("Impresoras", jPanel6);
@@ -446,11 +489,7 @@ public class MenuImpresion extends javax.swing.JFrame {
         String nombre = this.jTextField_AppName.getText();
         String prioridad = this.jTextField_AppPrioridad.getText();
         if(!nombre.equals("") && !prioridad.equals("")){
-            if(!Singleton.getInstance().getControlador().validarNombreAplicacion(nombre)){
-                int contador = Singleton.getInstance().getCantidadAplicaciones();
-                Proceso proceso = new Proceso(contador, "Running", Integer.parseInt(prioridad), nombre);
-                Singleton.getInstance().setCantidadAplicaciones(contador++);
-                Singleton.getInstance().getControlador().agregarAplicacion(proceso);
+            if(Singleton.getInstance().getControlador().agregarAplicacion(nombre,prioridad)){
                 this.mensajeDialog("Aplicación creada con éxito.","Creación éxitosa");
                 this.jTextField_AppName.setText("");
                 this.jTextField_AppPrioridad.setText("");
@@ -467,27 +506,10 @@ public class MenuImpresion extends javax.swing.JFrame {
         String nombre = this.jTextField_ImprName.getText();
         String size = this.jTextField_ImprNameSize.getText();
         if(!nombre.equals("") && !size.equals("")){
-            if(!Singleton.getInstance().getControlador().validarNombreImpresora(nombre)){
-                int contador = Singleton.getInstance().getCantidadImpresoras();
-                Proceso proceso = new Proceso(contador, "Running",contador, nombre);
-                CasilleroMensajes casilleroMensajes = new CasilleroMensajes(Integer.parseInt(size),"Prioridad", "");
-                Impresora impresora = new Impresora(proceso, casilleroMensajes);
-                
-                Singleton.getInstance().setCantidadAplicaciones(contador++);
-                Singleton.getInstance().getControlador().agregarImpresora(impresora);
-                
+            if(Singleton.getInstance().getControlador().agregarImpresora(nombre,size)){
                 this.mensajeDialog("Aplicación creada con éxito.","Creación éxitosa");
                 this.jTextField_ImprName.setText("");
                 this.jTextField_ImprNameSize.setText("");
-                try {
-                    String current = new java.io.File( "." ).getCanonicalPath();
-                    current+="\\Impresoras\\"+nombre;
-                    //System.out.println(current);
-                    File directorio = new File(current);
-                    directorio.mkdir(); 
-                } catch (IOException ex) {
-                    Logger.getLogger(MenuImpresion.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }else{
                 this.mensajeDialog("Existe una impresora con el mismo nombre.", "Existencia impresora");
             }
@@ -502,9 +524,11 @@ public class MenuImpresion extends javax.swing.JFrame {
         if(select==1){
             cargarAplicaciones(this.jList_applicaciones);
             cargarImpresoras(this.jList_sendImpresora);
+            this.jTextArea_logApp.setText("");
         }else if(select==2){
             cargarImpresoras(this.jList_impresoras);
             this.jTextArea_casilleroImpresora.setText("");
+            this.jTextArea_logImpresora.setText("");
         }
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
@@ -536,8 +560,9 @@ public class MenuImpresion extends javax.swing.JFrame {
         if(proceso!=-1 && impresora!=-1 && !contenido.equals("")){
             if(Singleton.getInstance().getControlador().validarSizeImpresora(impresora)){
                 Singleton.getInstance().getControlador().send(proceso, impresora, contenido);
-                this.jTextField_msgSend.setText("");
                 this.mensajeDialog("Se envio el mensaje.", "Mensaje enviado.");
+                this.jTextField_msgSend.setText("");
+                cargarLogApp(proceso);
             }else{
                this.mensajeDialog("Bandeja de entrada llena.", "Impresora llena."); 
             }
@@ -550,10 +575,7 @@ public class MenuImpresion extends javax.swing.JFrame {
         // TODO add your handling code here:
         int impresora = this.jList_impresoras.getSelectedIndex();
         if(impresora!=-1){
-            String mensajesCasillero = Singleton.getInstance().getControlador()
-                    .getListaImpresoras().get(impresora)
-                    .getCasilleroMensajes().getCasilleroString();
-            this.jTextArea_casilleroImpresora.setText(mensajesCasillero);
+            cargarLogImpresora(impresora);
         }
     }//GEN-LAST:event_jList_impresorasMouseClicked
 
@@ -561,11 +583,26 @@ public class MenuImpresion extends javax.swing.JFrame {
         // TODO add your handling code here:
         int impresora = this.jList_impresoras.getSelectedIndex();
         if(impresora!=-1){
-            Singleton.getInstance().getControlador().receive(impresora);
+            boolean estado = Singleton.getInstance().getControlador().receive(impresora);
+            if(estado){
+                cargarLogImpresora(impresora);
+                this.mensajeDialog("Se realizo la impresión.", "Impresión correcta.");
+            }else{
+                this.mensajeDialog("No se realizo la impresión.", "Impresión incorrecta.");
+            }
         }else{
             this.mensajeDialog("Seleccione una impresora", "Seleción impresora");
         }
     }//GEN-LAST:event_jButton_imprimirActionPerformed
+
+    private void jList_applicacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList_applicacionesMouseClicked
+        // TODO add your handling code here:
+        int app = this.jList_applicaciones.getSelectedIndex();
+        if(app!=-1){
+            cargarLogApp(app);  
+        }
+        
+    }//GEN-LAST:event_jList_applicacionesMouseClicked
     /**
      * Metodo que permite cargar las aplicaciones en JList
      * @param jList 
@@ -608,6 +645,19 @@ public class MenuImpresion extends javax.swing.JFrame {
         
     }
     
+    public void cargarLogApp(int app){
+        String log = Singleton.getInstance().getControlador().obtenerLogAplicacion(app);
+        this.jTextArea_logApp.setText(log);
+    }
+    
+    public void cargarLogImpresora(int impresora){
+        String mensajesCasillero = Singleton.getInstance().getControlador()
+                    .getListaImpresoras().get(impresora)
+                    .getCasilleroMensajes().getCasilleroString();
+            this.jTextArea_casilleroImpresora.setText(mensajesCasillero);
+            String log = Singleton.getInstance().getControlador().getListaImpresoras().get(impresora).getProceso().getLogEventos(100);
+            this.jTextArea_logImpresora.setText(log);
+    }
     public void mensajeDialog(String mensaje, String tituloBarra){
         
         JOptionPane.showMessageDialog(null, mensaje, tituloBarra, JOptionPane.INFORMATION_MESSAGE);
@@ -657,6 +707,8 @@ public class MenuImpresion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -679,8 +731,12 @@ public class MenuImpresion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea_casilleroImpresora;
+    private javax.swing.JTextArea jTextArea_logApp;
+    private javax.swing.JTextArea jTextArea_logImpresora;
     private javax.swing.JTextField jTextField_AppName;
     private javax.swing.JTextField jTextField_AppPrioridad;
     private javax.swing.JTextField jTextField_ImprName;

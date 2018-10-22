@@ -78,10 +78,20 @@ public final class Controlador {
     
     /**
      * Metodo que permite agregar un proceso
-     * @param proceso 
+     * @param nombre 
+     * @return  
      */
-    public void agregarAplicacion(Proceso proceso){
-        this.listaAplicaciones.AgregarProceso(proceso);
+    public boolean agregarAplicacion(String nombre,String prioridad){
+        if(!Singleton.getInstance().getControlador().validarNombreAplicacion(nombre)){
+                int contador = Singleton.getInstance().getCantidadAplicaciones();
+                Proceso proceso = new Proceso(contador, "Running", Integer.parseInt(prioridad), nombre);
+                Singleton.getInstance().setCantidadAplicaciones(contador++);
+                proceso.AgregarEvento("La aplicación : "+nombre+" se a creado.");
+                this.listaAplicaciones.AgregarProceso(proceso);
+                return true;
+        }else{
+            return false;
+        }  
     }
     /**
      * Metodo que obtiene el ultimo mensaje de la impresora
@@ -97,22 +107,45 @@ public final class Controlador {
     }
     
     /**
-     * 
+     * Metodo que se encarga de enviar un mensaje
      * @param fuente
      * @param destino
      * @param contenido 
+     * @return  
      */
-    public void send(int fuente, int destino, String contenido){
+    public boolean send(int fuente, int destino, String contenido){
         int cont = obtenerContadorImpresora(destino);
         int prioridad = obtenerPrioridadAplicacion(fuente);
         Mensaje mensaje = new Mensaje(cont,"Archivo", destino, fuente, -1, contenido, prioridad);
         
         this.listaImpresoras.get(destino).getCasilleroMensajes().AgregarMensajeCasillero(mensaje);
+        String impre = Singleton.getInstance().getControlador().nombreImpresora(destino);
+        String evento = "La aplicación envio el mensaje: "+contenido+" a la impresora: "+impre;
+        agregarEventoAplicacion(fuente, evento);
         //System.out.println(this.listaImpresoras.get(0).getCasilleroMensajes().getCasilleroString());;
+        return true;
     }
     
     public String nombreAplicacion(int aplicacion){
         return this.listaAplicaciones.getListaProcesos().get(aplicacion).getNombre();
+    }
+    
+    /**
+     * Metodo que permite agregarle un evento a la aplicación
+     * @param app
+     * @param evento 
+     */
+    public void agregarEventoAplicacion(int app,String evento){
+        this.listaAplicaciones.getListaProcesos().get(app).AgregarEvento(evento);
+    }
+    
+    /**
+     * Metodo que obtiene el log del proceso del app
+     * @param app
+     * @return 
+     */
+    public String obtenerLogAplicacion(int app){
+        return this.listaAplicaciones.getListaProcesos().get(app).getLogEventos(100);
     }
     
     //Lógica para Impresoras
@@ -134,10 +167,35 @@ public final class Controlador {
     }
     /**
      * Metodo que permite agregar una nueva impresora
-     * @param impresora 
+     * @param nombre
+     * @param size 
+     * @return  
      */
-    public void agregarImpresora(Impresora impresora){
-        this.listaImpresoras.add(impresora);
+    public boolean agregarImpresora(String nombre,String size){
+        if(!Singleton.getInstance().getControlador().validarNombreImpresora(nombre)){
+            int contador = Singleton.getInstance().getCantidadImpresoras();
+            Proceso proceso = new Proceso(contador, "Running",contador, nombre);
+            proceso.AgregarEvento("El proceso de la impresora: "+nombre+" se a creado.");
+            CasilleroMensajes casilleroMensajes = new CasilleroMensajes(Integer.parseInt(size),"Prioridad", "");
+            Impresora impresora = new Impresora(proceso, casilleroMensajes);
+            Singleton.getInstance().setCantidadAplicaciones(contador++);
+            this.listaImpresoras.add(impresora);
+
+            try {
+                String current = new java.io.File( "." ).getCanonicalPath();
+                current+="\\Impresoras\\"+nombre;
+                //System.out.println(current);
+                File directorio = new File(current);
+                directorio.mkdir(); 
+                return true;
+            } catch (IOException ex) {
+                return false;
+                //Logger.getLogger(MenuImpresion.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+        }else{
+            return false;
+        }
+        
     }
     /**
      *  metodo que retorna el nombre de una impresora
@@ -160,47 +218,69 @@ public final class Controlador {
     /**
      * Metodo encargo de realizar la impresión de una impresora
      * @param impresora 
+     * @return  
      */
-    public void receive(int impresora){
+    public boolean receive(int impresora){
         CasilleroMensajes casilleroMensajes = this.listaImpresoras.get(impresora).getCasilleroMensajes();
         Mensaje mensaje = casilleroMensajes.SacarMensaje();
-        this.listaImpresoras.get(impresora).getProceso().AgregarMensaje(mensaje);
+        if(mensaje!=null){
+            this.listaImpresoras.get(impresora).getProceso().AgregarMensaje(mensaje);
     
-        String pathArchivo = (String) mensaje.getContenido();
-        
-        try {
-            String current = new java.io.File( "." ).getCanonicalPath();
-                    current+="\\Impresoras\\";
+            String pathArchivo = (String) mensaje.getContenido();
 
-            File origen = new File(pathArchivo);
-            
-            String appName = Singleton.getInstance().getControlador().nombreAplicacion(mensaje.getFuente());
-            String impreName = Singleton.getInstance().getControlador().nombreImpresora(mensaje.getDestino());
-            Date fecha = new Date();
-            String formatoFecha =String.valueOf(fecha.getDate())+"_"+
-                    String.valueOf(fecha.getHours())+"-"+
-                    String.valueOf(fecha.getMinutes())+"-"+
-                    String.valueOf(fecha.getSeconds());
-            System.out.println(formatoFecha);
-            current+=impreName+"\\"+appName+"_"+formatoFecha+"_"+origen.getName();
-            
-            File destino = new File(current);
+            try {
+                String current = new java.io.File( "." ).getCanonicalPath();
+                        current+="\\Impresoras\\";
 
-            InputStream in = new FileInputStream(origen);
-            OutputStream out = new FileOutputStream(destino);
+                File origen = new File(pathArchivo);
 
-            byte[] buf = new byte[1024];
-            int len;
+                String appName = Singleton.getInstance().getControlador().nombreAplicacion(mensaje.getFuente());
+                String impreName = Singleton.getInstance().getControlador().nombreImpresora(mensaje.getDestino());
+                Date fecha = new Date();
+                String formatoFecha =String.valueOf(fecha.getDate())+"_"+
+                        String.valueOf(fecha.getHours())+"-"+
+                        String.valueOf(fecha.getMinutes())+"-"+
+                        String.valueOf(fecha.getSeconds());
+                System.out.println(formatoFecha);
+                String nombreArchivo = appName+"_"+formatoFecha+"_"+origen.getName();
+                current+=impreName+"\\"+nombreArchivo;
 
-            while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
+                File destino = new File(current);
+
+                InputStream in = new FileInputStream(origen);
+                OutputStream out = new FileOutputStream(destino);
+
+                byte[] buf = new byte[1024];
+                int len;
+
+                while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                }
+
+                in.close();
+                out.close();
+                String evento = "El proceso de la impresora: "+impreName+ " realizo la impresión del archivo: "+nombreArchivo
+                        +" de la aplicación: "+appName;
+                agregarEventoImpresora(impresora, evento);
+                String eventoApp = "El mensaje: "+pathArchivo+" fue impreso por la impresora: "+impreName;
+                agregarEventoAplicacion(mensaje.getFuente(), eventoApp);
+                return true;
+            } catch (IOException ioe){
+                return false;
             }
-
-            in.close();
-            out.close();
-        } catch (IOException ioe){
+        }else{
+            return false;
         }
-        
+
+    }
+    
+    /**
+     * Metodo que permite agregar un evento a una impresora
+     * @param impresora
+     * @param evento 
+     */
+    public void agregarEventoImpresora(int impresora,String evento){
+        this.listaImpresoras.get(impresora).getProceso().AgregarEvento(evento);
     }
 
 }
