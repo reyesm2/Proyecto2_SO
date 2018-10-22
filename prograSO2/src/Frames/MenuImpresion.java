@@ -65,6 +65,7 @@ public class MenuImpresion extends javax.swing.JFrame {
         jButton_CrearImpr = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jTextField_ImprNameSize = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -218,24 +219,38 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton2.setText("Ayuda");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+                .addContainerGap(161, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(136, 136, 136))
+                .addGap(53, 53, 53)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -603,6 +618,115 @@ public class MenuImpresion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jList_applicacionesMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String ayudaSensitiva = "";
+      
+      
+        String contenidoMensaje = Singleton.getInstance().getControlador().getConfiguracionSistema().getFormato().getContenido();
+        String largoMensaje =  Singleton.getInstance().getControlador().getConfiguracionSistema().getFormato().getLargo();
+        String direccionamiento = Singleton.getInstance().getControlador().getConfiguracionSistema().getDireccionamiento().getTipoDireccionamiento();
+        String manejoCola =  Singleton.getInstance().getControlador().getConfiguracionSistema().getManejoColas().getTipo();
+        String syncSend =  Singleton.getInstance().getControlador().getConfiguracionSistema().getSincronizacion().getSend();
+        String syncReceive =  Singleton.getInstance().getControlador().getConfiguracionSistema().getSincronizacion().getReceive();
+        int largo = Singleton.getInstance().getControlador().getConfiguracionSistema().getFormato().getTamano();
+
+
+
+        ayudaSensitiva = "El contenido de los mensajes creados será de tipo: " + contenidoMensaje + ".\n" ;
+
+        if(largoMensaje.equals("Largo Fijo")){
+
+            ayudaSensitiva += "El largo fijo de los mensajes indica que no posible crear mensajes que sobrepasen el tamaño establecido" + ".\n";
+            ayudaSensitiva += "El tamaño de los mensajes es de " + String.valueOf(largo) + " bytes" + ".\n";
+
+        }
+        else{
+             ayudaSensitiva += "El largo variable de los mensajes indica que no existe un tamaño limite en bytes para los mensajes" + ".\n";
+        }
+
+
+        switch(direccionamiento){
+
+            case("DirectoReceive Explícito"):{
+
+                 ayudaSensitiva += "El direccionamiento directo establece una comunicación  directa entre procesos. "
+                    + "Comandos send específican cual proceso recibirá el mensaje" + ".\n"
+                    + "Receive explícito establece que el comando 'receive' especifica de que proceso es recibido el mensaje" + ".\n";
+
+                  break;
+            }
+            case("DirectoReceive Implícito"):{
+
+                ayudaSensitiva += "El direccionamiento directo establece una comunicación  directa entre procesos. "
+                    + "Comandos send específican cual proceso recibirá el mensaje" + ".\n"
+                    + " Receive implícito establece que el comando receive no especifique de que proceso es recibido el mensaje" + ".\n";
+
+                break;
+            }
+            case("IndirectoEstático"):{
+
+                ayudaSensitiva += "El direccionamiento indirecto establece una comunicación entre procesos a través de un mailbox. \n"
+                    + " Indirecto Estático establece que el mailbox es reservado por un solo proceso, todo el contenido del mailbox pasa a ser de un único proceso" + ".\n";
+                break;
+            }
+            case("IndirectoDinámico"):{
+
+                ayudaSensitiva += "El direccionamiento indirecto establece una comunicación entre procesos a través de un mailbox. \n"
+                    + " Indirecto Dinámico establece que el mailbox no es reservador por ningún proceso, todos los procesos pueden recibir mensajes" + ".\n";
+                break;
+
+
+
+            }
+        }
+
+        // Sync
+
+        if(syncSend.equals("Blocking")){
+
+            ayudaSensitiva += "Sincronización send blocking establece que el proceso que envió el mensaje queda bloqueado hasta " + ".\n" + 
+                    " que reciba una notificación de que el mensaje que envió fue recibido" + ".\n" ; 
+        }
+        else{
+
+             ayudaSensitiva += "Sincronización send Non blocking establece que el proceso no se queda esperando una confirmación " + ".\n" ;
+
+
+        }
+
+        if(syncReceive.equals("Blocking")){
+
+            ayudaSensitiva += "Sincronización receive blocking establece que el proceso  se queda bloqueado sino hay mensajes para el" + ".\n" ;
+
+
+        }
+        else if(syncReceive.equals("NonBlocking")){
+
+            ayudaSensitiva += "Sincronización receive non blocking establece que el proceso que recibe un mensaje no se queda bloqueado" + ".\n" ;
+
+        }
+        else{
+
+            ayudaSensitiva += "Sincronización receive Prueba de llegada establece que el proceso se queda preguntando constantemente si existen mensajes para el" + ".\n" ;
+
+        }
+
+        // Disciplina de manejo
+
+        if(manejoCola.equals("FIFO")){
+
+            ayudaSensitiva += "La disciplina de manejo de colas FIFO establece que el primer mensaje agregado a la cola es el primero en ser enviado" + ".\n";
+
+        }
+        else{
+            ayudaSensitiva += "La disciplina de manejo de colas por Prioridad establece que el mensaje con la mayor prioridad es el mensaje que procesa" + ".\n";
+        }
+
+
+        this.mensajeDialog(ayudaSensitiva, "Ayuda Sensitiva");
+    }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Metodo que permite cargar las aplicaciones en JList
      * @param jList 
@@ -700,6 +824,7 @@ public class MenuImpresion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_CrearApp;
     private javax.swing.JButton jButton_CrearImpr;
     private javax.swing.JButton jButton_cargarMsg;

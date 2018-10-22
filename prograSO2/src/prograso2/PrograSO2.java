@@ -5,6 +5,7 @@
  */
 package prograso2;
 
+import Controlador.Singleton;
 import Frames.MenuImpresion;
 
 
@@ -20,6 +21,7 @@ public class PrograSO2 {
     public static void main(String[] args) {
         // TODO code application logic here
         MenuImpresion menuImpresion = new MenuImpresion();
+        Singleton.getInstance().getControlador().DefinirConfiguraciónDefault();
         menuImpresion.show();
     }
     

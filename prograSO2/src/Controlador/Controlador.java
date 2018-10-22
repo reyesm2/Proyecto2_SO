@@ -20,9 +20,14 @@ import modelo.CasilleroMensajes;
 import modelo.ColaMensajes;
 import modelo.ColaProcesos;
 import modelo.ConfiguracionSistema;
+import modelo.Direccionamiento;
+import modelo.Formato;
 import modelo.Impresora;
+import modelo.ListaSolicitudes;
+import modelo.ManejoColas;
 import modelo.Mensaje;
 import modelo.Proceso;
+import modelo.Sincronizacion;
 
 /**
  *
@@ -63,7 +68,17 @@ public final class Controlador {
     public void setListaImpresoras(ArrayList<Impresora> listaImpresoras) {
         this.listaImpresoras = listaImpresoras;
     }
+    
+    public void DefinirConfiguraciónDefault(){
+        Sincronizacion sincronizacion = new Sincronizacion("Nonblocking","Prueba de llegada");
+        Direccionamiento direccionamiento = new Direccionamiento("IndirectoEstático",true,true,false,false,false);
+        Formato formato = new Formato("Archivo","Largo Variable",-1);
+        ManejoColas manejoColas = new ManejoColas("Priodad");
+        int tamanoColaProcesos = 10;
+        int tamanoColaMensajes = 10;
+        this.configuracionSistema = new ConfiguracionSistema(tamanoColaProcesos, tamanoColaMensajes, sincronizacion, direccionamiento, formato, manejoColas);
 
+    }
     
     //Lógica para Aplicaciones
     
@@ -79,6 +94,7 @@ public final class Controlador {
     /**
      * Metodo que permite agregar un proceso
      * @param nombre 
+     * @param prioridad 
      * @return  
      */
     public boolean agregarAplicacion(String nombre,String prioridad){
