@@ -395,8 +395,6 @@ public class MenuImpresion extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList_impresoras);
 
-        jPanel7.setPreferredSize(null);
-
         jTextArea_casilleroImpresora.setEditable(false);
         jTextArea_casilleroImpresora.setColumns(20);
         jTextArea_casilleroImpresora.setRows(5);
@@ -454,6 +452,8 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jButton_imprimir.setVisible(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);

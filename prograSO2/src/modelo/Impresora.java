@@ -13,11 +13,13 @@ public class Impresora {
     private Proceso proceso;
     private CasilleroMensajes casilleroMensajes;
     private int contador;
+    private HiloImpresora hilo;
 
-    public Impresora(Proceso proceso, CasilleroMensajes casilleroMensajes) {
+    public Impresora(Proceso proceso, CasilleroMensajes casilleroMensajes,HiloImpresora hilo) {
         this.proceso = proceso;
         this.casilleroMensajes = casilleroMensajes;
         this.contador = 0;
+        this.hilo = hilo;
     }
 
     public Proceso getProceso() {
@@ -44,6 +46,21 @@ public class Impresora {
         this.contador = contador;
     }
 
+    public HiloImpresora getHilo() {
+        return hilo;
+    }
+
+    public void setHilo(HiloImpresora hilo) {
+        this.hilo = hilo;
+    }
+    
+    /**
+     * Metodo que inicia el hilo de impresión
+     */
+    public void iniciarHilo(){
+        this.hilo.start();
+    }
+    
     @Override
     public String toString() {
         return "Impresora{" + "proceso=" + proceso + ", casilleroMensajes=" + casilleroMensajes + ", contador=" + contador + '}';

@@ -7,6 +7,7 @@ package prograso2;
 
 import Controlador.Singleton;
 import Frames.MenuImpresion;
+import modelo.HiloImpresora;
 
 
 /**

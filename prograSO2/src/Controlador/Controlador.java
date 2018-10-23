@@ -22,6 +22,7 @@ import modelo.ColaProcesos;
 import modelo.ConfiguracionSistema;
 import modelo.Direccionamiento;
 import modelo.Formato;
+import modelo.HiloImpresora;
 import modelo.Impresora;
 import modelo.ListaSolicitudes;
 import modelo.ManejoColas;
@@ -38,7 +39,8 @@ public final class Controlador {
     private ConfiguracionSistema configuracionSistema;
     private ColaProcesos listaAplicaciones;
     private ArrayList<Impresora> listaImpresoras;
-
+    private final int velocidadImpresion = 30;
+    
     public Controlador() {
         this.configuracionSistema=null;
         this.listaAplicaciones = new ColaProcesos(1000);
@@ -193,8 +195,10 @@ public final class Controlador {
             Proceso proceso = new Proceso(contador, "Running",contador, nombre);
             proceso.AgregarEvento("El proceso de la impresora: "+nombre+" se a creado.");
             CasilleroMensajes casilleroMensajes = new CasilleroMensajes(Integer.parseInt(size),"Prioridad", "");
-            Impresora impresora = new Impresora(proceso, casilleroMensajes);
-            Singleton.getInstance().setCantidadAplicaciones(contador++);
+            HiloImpresora hilo = new HiloImpresora(contador, velocidadImpresion);
+            Impresora impresora = new Impresora(proceso, casilleroMensajes,hilo);
+            Singleton.getInstance().setCantidadImpresoras(contador+1);
+            impresora.iniciarHilo();
             this.listaImpresoras.add(impresora);
 
             try {
@@ -257,7 +261,6 @@ public final class Controlador {
                         String.valueOf(fecha.getHours())+"-"+
                         String.valueOf(fecha.getMinutes())+"-"+
                         String.valueOf(fecha.getSeconds());
-                System.out.println(formatoFecha);
                 String nombreArchivo = appName+"_"+formatoFecha+"_"+origen.getName();
                 current+=impreName+"\\"+nombreArchivo;
 

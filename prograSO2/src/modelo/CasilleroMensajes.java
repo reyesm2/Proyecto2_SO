@@ -110,8 +110,6 @@ public class CasilleroMensajes {
 
                 listaPrioridades = determinarPrioridadMensajes();
 
-                System.out.println(listaPrioridades);
-
                 int prioridadActual = determinarPrioridadMayor(listaPrioridades);
 
                 Mensaje mensajeARetornar = listaMensajes.get(prioridadActual);
