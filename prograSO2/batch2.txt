@@ -1,0 +1,12 @@
+#ncomandos
+10
+#agregarAplicacion
+word
+2
+#agregarImpresora
+impresora1
+10
+#send
+0
+0
+Mensaje a Imprimir

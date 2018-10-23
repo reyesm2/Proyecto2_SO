@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -137,7 +138,25 @@ public class Batch {
                 
                     nombreImpresora = linea;
                     linea = br.readLine();
-                    sizeImpresoraString = linea; 
+                    sizeImpresoraString = linea;
+                    
+                    
+             
+                    if(!nombreImpresora.equals("") && !nombreImpresora.equals("")){
+                        
+                        if(Singleton.getInstance().getControlador().agregarImpresora(nombreImpresora,sizeImpresoraString)){
+                            
+                    }
+                        else{
+                            this.mensajeDialog("Existe una impresora con el mismo nombre.", "Existencia impresora");
+                        }
+                        
+                    }
+                    
+                    else{
+                        this.mensajeDialog("Completo todos los datos.", "Datos Incompletos");
+                    }
+        
                     
                 }
                 
@@ -148,32 +167,86 @@ public class Batch {
                 
                     nombreAplicacion = linea;               
                     linea = br.readLine();
-                    prioridadAplicacion = br.readLine();
-                
+                    prioridadAplicacion = linea;
                     
+                    
+                    System.out.println(nombreAplicacion);
+                    System.out.println(prioridadAplicacion);
+                   
+                    if(!nombreAplicacion.equals("") && !prioridadAplicacion.equals("")){
+                        
+                        if(Singleton.getInstance().getControlador().agregarAplicacion(nombreAplicacion,prioridadAplicacion)){
+                        
+                            this.mensajeDialog("Aplicación creada con éxito.","Creación éxitosa"); 
+                        }
+                        
+                        else{                         
+                            this.mensajeDialog("Existe una aplicación con el mismo nombre.", "Existencia aplicación");
+                        }
+                    }
+                    
+                    else{
+                        this.mensajeDialog("Completo todos los datos.", "Datos Incompletos");
+                    }   
                 }
+                
+                
+                
                 else if(send){
                     
                     String sendFuenteString  = "";
                     String sendDestinoString  = "";
-                
-                    sendFuenteString = linea;              
+                    String mensajeAImprimir  = "";
+                    
+                    sendFuenteString = linea;
+                    
                     linea = br.readLine();
                     sendDestinoString = linea;
-                
                     
+                    linea = br.readLine();
+                    mensajeAImprimir = linea;
+                    
+                    int sendFuente = Integer.parseInt(sendFuenteString);
+                    int sendDestino = Integer.parseInt(sendDestinoString);
+                    
+                  // fuente, destino, contenido
+                  
+                  
+                    if(sendFuente !=-1 && sendDestino!=-1 && !mensajeAImprimir.equals("")){
+                        
+                        if(Singleton.getInstance().getControlador().validarSizeImpresora(sendDestino)){
+                            
+                            Singleton.getInstance().getControlador().send(sendFuente, sendDestino, mensajeAImprimir);
+                            this.mensajeDialog("Se envio el mensaje.", "Mensaje enviado.");
+                        //cargarLogApp(sendFuente);
+                    }
+                        else{
+                            
+                            this.mensajeDialog("Bandeja de entrada llena.", "Impresora llena."); 
+                        }
+                    }
+                    
+                    else{
+                        this.mensajeDialog("Complete todos los datos.", "Datos Incompletos");
+                    }
+   
                 }
-                else if(receive){
-                    
-                    
-                }
-                
-                
+                           
             }
-            
-            
-            
+ 
         }
+    
+
+
+    
+    
+    
+    }
+    
+    
+    public void mensajeDialog(String mensaje, String tituloBarra){
+        
+        JOptionPane.showMessageDialog(null, mensaje, tituloBarra, JOptionPane.INFORMATION_MESSAGE);
     }
     
     

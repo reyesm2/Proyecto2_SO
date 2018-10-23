@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
+import modelo.Batch;
 import modelo.CasilleroMensajes;
 import modelo.ColaProcesos;
 import modelo.Impresora;
@@ -66,6 +67,7 @@ public class MenuImpresion extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField_ImprNameSize = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        button_Batch = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -226,16 +228,25 @@ public class MenuImpresion extends javax.swing.JFrame {
             }
         });
 
+        button_Batch.setText("Batch");
+        button_Batch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_BatchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button_Batch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -246,7 +257,9 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(button_Batch)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -568,6 +581,8 @@ public class MenuImpresion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        
         int proceso = this.jList_applicaciones.getSelectedIndex();
         int impresora = this.jList_sendImpresora.getSelectedIndex();
         String contenido = this.jTextField_msgSend.getText();
@@ -727,6 +742,29 @@ public class MenuImpresion extends javax.swing.JFrame {
 
         this.mensajeDialog(ayudaSensitiva, "Ayuda Sensitiva");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void button_BatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BatchActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+        int returnValue = jfc.showOpenDialog(null);
+		// int returnValue = jfc.showSaveDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = jfc.getSelectedFile();
+            Batch batch = new Batch();
+            
+            try {
+                batch.leerArchivo(selectedFile);
+                this.mensajeDialog("Configuracion Lista", "Configuracion");
+            } catch (IOException ex) {
+                this.mensajeDialog("El archivo no puedo ser leido", "Error en el archivo");
+
+            }
+            
+            System.out.println(selectedFile.getAbsolutePath());
+        }      
+    }//GEN-LAST:event_button_BatchActionPerformed
     /**
      * Metodo que permite cargar las aplicaciones en JList
      * @param jList 
@@ -823,6 +861,7 @@ public class MenuImpresion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_Batch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_CrearApp;
