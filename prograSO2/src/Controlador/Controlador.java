@@ -136,9 +136,13 @@ public final class Controlador {
         int prioridad = obtenerPrioridadAplicacion(fuente);
         Mensaje mensaje = new Mensaje(cont,"Archivo", destino, fuente, -1, contenido, prioridad);
         
-        this.listaImpresoras.get(destino).getCasilleroMensajes().AgregarMensajeCasillero(mensaje);
+        this.listaImpresoras.get(destino).getCasilleroMensajes().AgregarMensajeCasillero(mensaje);      
+        String nombreApp = this.listaAplicaciones.getNombreProceso(fuente);
+        
+        
+        
         String impre = Singleton.getInstance().getControlador().nombreImpresora(destino);
-        String evento = "La aplicación envio el mensaje: "+contenido+" a la impresora: "+impre;
+        String evento = "La aplicación "  +nombreApp + " envio el mensaje: "+contenido+" a la impresora: "+impre;
         agregarEventoAplicacion(fuente, evento);
         //System.out.println(this.listaImpresoras.get(0).getCasilleroMensajes().getCasilleroString());;
         return true;

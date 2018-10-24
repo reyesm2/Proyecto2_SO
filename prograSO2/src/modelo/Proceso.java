@@ -37,6 +37,11 @@ public class Proceso {
         this.nombre=nombre;
     }
     
+    
+    public String getNombre(){
+        return this.nombre;
+    }
+    
     public String getLogEventos(int cantidadEventos){
         
         if(cantidadEventos == -1){
@@ -127,9 +132,6 @@ public class Proceso {
         this.ProgramCounter = ProgramCounter;
     }    
 
-    public String getNombre() {
-        return nombre;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

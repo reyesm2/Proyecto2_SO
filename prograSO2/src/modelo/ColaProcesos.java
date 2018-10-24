@@ -47,6 +47,21 @@ public class ColaProcesos {
         return "";
     }
   
+    
+    public String getNombreProceso(int idProceso){
+        
+        int idTemporal;
+        for(Proceso proceso: this.listaProcesos){
+            idTemporal = proceso.getIdentificador();
+            if(idTemporal == idProceso){
+                String val = proceso.getNombre();
+                return val;
+            }
+        }
+        return "";
+        
+        
+    }
     public String getProceso(int idProceso){
         int idTemporal;
         for(Proceso proceso: this.listaProcesos){
