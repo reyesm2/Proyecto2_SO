@@ -28,7 +28,7 @@ public class Batch {
         BufferedReader br = new BufferedReader(fileReader);
         String linea = "";
         
-        String nComandosBatch = "ncomandos";
+        String nComandosBatch = "#ncomandos";
         String agregarAplicacionBatch = "#agregarAplicacion";
         String agregarImpresoraBatch = "#agregarImpresora";
         String sendBatch = "#send";
@@ -42,10 +42,13 @@ public class Batch {
         boolean send = false;
         boolean receive = false;
         
+        int cantidadNComandos = 1000;
+        
         Singleton.getInstance().getControlador().DefinirConfiguraciónDefault();
         
         while( (linea = br.readLine() ) != null){
             
+
             if(linea.equals(nComandosBatch)){
                 
                 nComandos = true;
@@ -126,11 +129,13 @@ public class Batch {
                 
                 if(nComandos){
                     
+                    
                     String nComandosString = "";
                     nComandosString = linea;
+                    cantidadNComandos = Integer.parseInt(nComandosString);
                     
                 }
-                else if(agregarImpresora){
+                else if(agregarImpresora && cantidadNComandos > 0){
                     
                 
                     String nombreImpresora = "";
@@ -157,10 +162,10 @@ public class Batch {
                         this.mensajeDialog("Completo todos los datos.", "Datos Incompletos");
                     }
         
-                    
+                    cantidadNComandos--;
                 }
                 
-                else if(agregarAplicacion){
+                else if(agregarAplicacion && cantidadNComandos > 0){
                     
                     String nombreAplicacion = "";
                     String prioridadAplicacion = "";
@@ -187,12 +192,15 @@ public class Batch {
                     
                     else{
                         this.mensajeDialog("Completo todos los datos.", "Datos Incompletos");
-                    }   
+                    }
+                    
+                    
+                    cantidadNComandos--;
                 }
                 
                 
                 
-                else if(send){
+                else if(send && cantidadNComandos > 0){
                     
                     String sendFuenteString  = "";
                     String sendDestinoString  = "";
@@ -231,6 +239,8 @@ public class Batch {
                     }
    
                 }
+                
+                cantidadNComandos--;
                            
             }
  
