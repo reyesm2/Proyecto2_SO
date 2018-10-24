@@ -104,7 +104,7 @@ public final class Controlador {
                 int contador = Singleton.getInstance().getCantidadAplicaciones();
                 Proceso proceso = new Proceso(contador, "Running", Integer.parseInt(prioridad), nombre);
                 Singleton.getInstance().setCantidadAplicaciones(contador++);
-                proceso.AgregarEvento("La aplicación : "+nombre+" se a creado.");
+                proceso.AgregarEvento("La aplicación : "+nombre+" se ha creado.");
                 this.listaAplicaciones.AgregarProceso(proceso);
                 return true;
         }else{
@@ -193,7 +193,7 @@ public final class Controlador {
         if(!Singleton.getInstance().getControlador().validarNombreImpresora(nombre)){
             int contador = Singleton.getInstance().getCantidadImpresoras();
             Proceso proceso = new Proceso(contador, "Running",contador, nombre);
-            proceso.AgregarEvento("El proceso de la impresora: "+nombre+" se a creado.");
+            proceso.AgregarEvento("El proceso de la impresora: "+nombre+" se ha creado.");
             CasilleroMensajes casilleroMensajes = new CasilleroMensajes(Integer.parseInt(size),"Prioridad", "");
             HiloImpresora hilo = new HiloImpresora(contador, velocidadImpresion);
             Impresora impresora = new Impresora(proceso, casilleroMensajes,hilo);
