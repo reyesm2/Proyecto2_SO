@@ -9,4 +9,4 @@ impresora1
 #send
 0
 0
-Mensaje a Imprimir
+C:\Users\Rigo-PC\Documents\A-2-Semestre-2018\Repositorios\Proyecto2_SO\prograSO2\batch2.txt

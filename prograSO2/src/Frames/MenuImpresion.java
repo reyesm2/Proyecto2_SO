@@ -117,7 +117,7 @@ public class MenuImpresion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList_applicaciones);
 
         jTextArea_logApp.setColumns(20);
-        jTextArea_logApp.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTextArea_logApp.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jTextArea_logApp.setRows(5);
         jScrollPane6.setViewportView(jTextArea_logApp);
 
@@ -128,14 +128,14 @@ public class MenuImpresion extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +243,7 @@ public class MenuImpresion extends javax.swing.JFrame {
 
         jTextArea_casilleroImpresora.setEditable(false);
         jTextArea_casilleroImpresora.setColumns(20);
-        jTextArea_casilleroImpresora.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTextArea_casilleroImpresora.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jTextArea_casilleroImpresora.setRows(5);
         jScrollPane4.setViewportView(jTextArea_casilleroImpresora);
 
@@ -255,7 +255,7 @@ public class MenuImpresion extends javax.swing.JFrame {
 
         jTextArea_logImpresora.setEditable(false);
         jTextArea_logImpresora.setColumns(20);
-        jTextArea_logImpresora.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTextArea_logImpresora.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jTextArea_logImpresora.setRows(5);
         jScrollPane5.setViewportView(jTextArea_logImpresora);
 
@@ -331,20 +331,20 @@ public class MenuImpresion extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Impresoras", jPanel6);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Definir Aplicaciones");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Nombre:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Prioridad:");
 
         jTextField_AppPrioridad.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jTextField_AppName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        jButton_CrearApp.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButton_CrearApp.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton_CrearApp.setText("Crear");
         jButton_CrearApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,15 +410,15 @@ public class MenuImpresion extends javax.swing.JFrame {
                 .addContainerGap(138, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Definir Impresora");
 
         jTextField_ImprName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Nombre:");
 
-        jButton_CrearImpr.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButton_CrearImpr.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton_CrearImpr.setText("Crear");
         jButton_CrearImpr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,7 +426,7 @@ public class MenuImpresion extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Tamaño Cola:");
 
         jTextField_ImprNameSize.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -548,11 +548,11 @@ public class MenuImpresion extends javax.swing.JFrame {
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
         // TODO add your handling code here:
         int select = this.jTabbedPane2.getSelectedIndex();
-        if(select==1){
+        if(select==0){
             cargarAplicaciones(this.jList_applicaciones);
             cargarImpresoras(this.jList_sendImpresora);
             this.jTextArea_logApp.setText("");
-        }else if(select==2){
+        }else if(select==1){
             cargarImpresoras(this.jList_impresoras);
             this.jTextArea_casilleroImpresora.setText("");
             this.jTextArea_logImpresora.setText("");
